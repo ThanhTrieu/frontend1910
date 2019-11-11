@@ -135,6 +135,102 @@
 			</tr>
 		</tfoot>
 	</table>
+
+	<!-- HTML media -->
+	<!-- hien thi hinh anh len web -->
+	<img src="images/icon.png" title="lphp1910E" alt="day la buc funny" width="300" height="300">
+	<br><br>
+	<!-- hien video ra ngoai trinh duyet -->
+	<video width="500" height="500" src="videos/test.mp4" autobuffer autoloop loop controls autoplay poster="images/icon.png"></video>
+	<br><br>
+	<!-- the audio -->
+	<audio src="audios/test.mp3" autobuffer autoloop loop controls></audio>
+	<br><br>
+	<!-- HTML youtube -->
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/JAhdeizXpaQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	<br><br>
+	<iframe width="500" height="100%" frameborder="0" src="https://www.vnexpress.net"></iframe>
+	<br><br>
+	<!-- HTM do hoa -->
+	<canvas width="500" height="500" style="border: 1px solid red;"></canvas>
+	<br><br>
+	<!-- HTML plugin -->
+	<object data="https://dantri.com.vn" width="290" height="45"></object>
+	<br><br>
+	<object data="images/icon.png" width="290" height="45"></object>
+
+	<br><br>
+	<!-- HTML Form -->
+	<form action="server/test.php" method="POST">
+		
+		<label for="fileData">Moi chon file upload</label>
+		<input type="file" name="avatar" id="fileData" multiple>
+		<br><br>
+
+		<!-- giup truyen tai du lieu tu noi nay sang noi khac -->
+		<!-- cac the html di kem voi form(thong thuong se di kem) -->
+		<label for="user">Username</label>
+		<input type="text" id="user" name="txtUser" class="myinput" value="BACADAD" minlength="3" maxlength="10">
+		<br><br>
+
+		<label for="pass">password</label>
+		<input value="12345" type="password" id="pass" name="txtPassword" disabled="disabled">
+		<br><br>
+
+		<label for="email">Email</label>
+		<input type="email" id="email" name="txtEmail">
+		<br><br>
+
+		<label for="url">URL</label>
+		<input type="url" id="url" name="txtUrl">
+		<br><br>
+
+		<label for="myNumber">Number</label>
+		<input type="number" id="myNumber" name="txtNumber">
+		<br><br>
+
+		<label for="color">Color</label>
+		<input type="color" id="color" name="myColor">
+		<br><br>
+
+		<label for="date">Date</label>
+		<!-- <input type="date" id="date" name="myDate"> -->
+		<!-- <input type="week" id="date" name="myDate"> -->
+		<input type="month" id="date" name="myDate">
+		<br><br>
+
+		<label for="birthday">Birthday date</label>
+		<select id="birthday" name="birthday">
+			<option value="-1">1</option>
+			<option value="-2">2</option>
+			<option value="-3">3</option>
+			<option selected="selected" >4</option>
+		</select>
+		<br><br>
+
+		<label for="gender">Gioi tinh</label>
+		<input value="1" type="radio" id="gender" name="gender"> Nam
+		<br>
+		<input value="2" type="radio" id="gender2" name="gender"> Nu
+		<br><br>
+
+		<label for="under18">Duoi 18T</label>
+		<input checked="checked" type="checkbox" id="under18" name="under18">
+		<br><br>
+		<label for="over18">Tren 18T</label>
+		<input type="checkbox" id="over18" name="over18">
+
+		<br><br>
+		<label for="content">Content</label>
+		<textarea id="content" name="content" rows="5" cols="100"></textarea>
+		<br><br>
+		<button name="btnClick" type="button">Click me</button>
+		<br><br>
+		<input name="btnClick2" type="button" value="click me 2">
+		<br><br>
+		<button type="submit" name="btnSubmit"> Submit form</button>
+	</form>
+
 </body>
 </html>
 
