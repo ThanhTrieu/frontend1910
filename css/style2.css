@@ -1,0 +1,129 @@
+/* css selector ket hop */
+/* tim cac the lien ke */
+/* h1 + p {
+	color: red;
+} */
+/* tim the truoc sau */
+/* h1 ~ p {
+	color: blue;
+} */
+
+/* tim the cha con */
+div.child-1 > p {
+	color: green;
+}
+div.child-1 > h3 {
+	color: green;
+}
+/* tim the trong ngoai */
+div.parent h3 {
+	color: yellow;
+}
+/* gom nhom selector */
+div.child-1 > p, div.child-1 > h3 {
+	color: pink;
+}
+
+div.box > div.box-2 + div.box-3 > div.box-4 div.box-5 ~ div.box-6 h5 {
+	color: blue;
+}
+
+section.box > section.box-2 > input[class$='abc'] + p.text ~ h5.tile input[type="email"] {
+	border: 1px solid red;
+}
+
+/* pesudo class */
+div.content :first-child {
+	color: blue;
+}
+div.content :first-of-type {
+	color: red;
+}
+div.content :last-child{
+	color: pink;
+}
+div.content :last-of-type {
+	color: green;
+}
+
+/*div.content h1:first-child{
+	color: gray;
+} */
+/*
+div.content:first-child {
+	width: 300px;
+	height: 300px;
+	background-color: #ccc;
+}
+*/
+div.content :nth-last-child(3) {
+	color: orange;
+}
+div.content :nth-last-of-type(3) {
+	color: yellow;
+}
+div.content :nth-child(2) {
+	color: brown;
+}
+
+div.content :nth-of-type(2) {
+	color: silver;
+}
+
+/* tac dong vao con duy nhat */
+div.container :only-child {
+	color: red;
+}
+
+div.container-fluid input[class='user']:focus {
+	width: 500px;
+	height: 30px;
+	border: 1px solid red;
+}
+div.container-fluid input[name='gender']:checked {
+	width: 120px;
+	height: 120px;
+	/* border: 1px solid red; */
+}
+
+/* kich hoat link */
+div.container-fluid a:active {
+	color: yellow;
+}
+
+/* link da tung vao */
+div.container-fluid a:visited {
+	color: violet;
+}
+
+/* link chua vao lan nao */
+div.container-fluid a:link {
+	color: red;
+}
+
+div.container-fluid:hover{
+	width: 120px;
+	height: 300px;
+	background-color: pink;
+}
+
+div.pesudo-elements p.caption::first-letter {
+	font-size: 25px;
+	color: red;
+}
+div.pesudo-elements p.caption::first-line{
+	color: blue;
+}
+
+div.pesudo-elements p.caption::before{
+	/* content: "LPHP1910E"; */
+	content: url('../images/icon.png');
+}
+
+div.pesudo-elements p.caption::selection {
+	color:  yellow;
+	/* opacity: 0; */
+}
+
+
+
