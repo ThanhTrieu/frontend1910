@@ -1,0 +1,98 @@
+*{
+	margin:  0;
+	padding: 0;
+}
+
+/* cac thuoc tinh lam viec voi van ban - tieu de */
+body {
+	font-family: 'tahoma';
+}
+p.title {
+	font-size: 12px;
+	font-variant: small-caps;
+	/* direction: rtl; */
+	text-indent: 50px;
+	text-decoration: line-through;
+}
+h4.myClass {
+	text-shadow: black 5px 4px 3px;
+}
+div.box {
+	width: 300px;
+	height: 300px;
+	/* mau nen */
+	/* chuan theo css 3 */
+	/* background-color: pink; */
+	/* anh nen */
+	/* background-image: url('../images/icon.png');
+	background-repeat: no-repeat; */
+	/* background-repeat: repeat-x; */
+	/* background-repeat: repeat-y; */
+	/* background-repeat: repeat; */
+	/* background-position: bottom center; */
+	/* background-attachment: fixed; */
+	/* background-attachment: scroll; */
+	/* background-size: cover; */
+	/* background-size: 100% 100%; */
+	/* chuan css 2 */
+	background: pink url('../images/icon.png') no-repeat fixed;
+}
+div.box-2{
+	width: 300px;
+	height: 300px;
+	border: 1px solid red;
+	/* border-top: 1px dotted red; */
+	margin-top: 30px;
+	/* padding-top: 30px; */
+}
+div.box-2 p.content {
+	margin-top: -30px;
+	/* padding-top: 30px; */
+	background-color: yellow;
+}
+div.box-3 a {
+	display: block;
+}
+
+div.container {
+	width: 200px;
+	height: 200px;
+	border: 1px solid red;
+	display: inline-block;
+}
+div.container a {
+	display: list-item;
+}
+div.box-4{
+	width: 980px;
+	height: 300px;
+	border: 1px solid red;
+}
+div.child-1,div.child-2,div.child-3 {
+	width: 300px;
+	height: 300px;
+	float: left;
+} 
+div.child-1 {
+	background-color: yellow;
+}
+div.child-2 {
+	background-color: blue;
+}
+div.child-3 {
+	background-color: green;
+}
+
+div.child-4{
+	width: 300px;
+	height: 300px;
+	background-color: violet;
+	clear: both;
+}
+.clear{
+	clear: both;
+}
+
+
+
+
