@@ -1,0 +1,55 @@
+/* reset trinh duyet */
+*{
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+body {
+	font-family: 'Roboto', sans-serif;
+}
+nav {
+	width: 250px;
+	margin: 10px auto;
+	background-color: #F1F8E0;
+	padding: 3px 0px 3px 10px;
+}
+nav ul.menu li {
+	list-style: none;
+	padding: 8px 0px;
+	border-bottom: 1px solid #ccc;
+	position: relative;
+}
+nav ul.menu li:last-child{
+	border: none;
+}
+nav ul.menu li a {
+	text-decoration: none;
+}
+
+nav ul.menu li:hover{
+	background-color: black;
+	cursor: pointer;
+}
+nav ul.menu li:hover > a {
+	color: white;
+	/* display: block; */
+}
+
+/* begin dropdown */
+/* ban dau se an menu dropdown */
+nav ul.menu li ul.dropdown {
+	display: none;
+	width: 250px;
+	background-color: #F1F8E0;
+	position: absolute;
+	left: 250px;
+	top: 0px;
+	padding-left: 10px;
+}
+/* hien thi menu dropdown khi hover vao cac li */
+nav ul.menu li:hover > ul.dropdown {
+	display: block;
+}
+
+
+

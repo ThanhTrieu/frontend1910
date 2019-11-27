@@ -1,0 +1,28 @@
+div.box {
+	width: 500px;
+	height: 500px;
+	border: 1px solid red;
+	position: relative;
+	background-color: pink;
+	/* z-index: 9999; */
+	z-index: 0;
+}
+img {
+	/* position: relative; */
+	position: absolute;
+	top: 400px;
+	left: 400px;
+	/* z-index: 0; */
+	/* right: 200px;
+	bottom: 200px; */
+	/* khong su dung thuoc tinh doi xung */
+}
+nav {
+	width: 100%;
+	height: 45px;
+	background-color: blue;
+	position: fixed;
+	top: 0px;
+	z-index: 1;
+}
+
