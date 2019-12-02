@@ -1,0 +1,123 @@
+*{
+	margin:  0;
+	padding:  0;
+	border:  0;
+}
+div.content {
+	width: 300px;
+	height: 50px;
+	border: 1px solid red;
+	/* overflow: hidden; */
+	/* overflow: scroll; */
+	/* overflow: auto; */
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+div.box {
+	width: 980px;
+	min-height: 500px;
+	margin: auto;
+}
+div.box div.child-1 {
+	width: 50%;
+	height: 500px;
+	background-color: green;
+	float: left;
+}
+
+div.box div.child-2 {
+	width: 50%;
+	height: 500px;
+	background-color: blue;
+	float: left;
+}
+
+/* responsive css box */
+@media only screen and (max-width: 812px) {
+	/* override code css ben ngoai */
+	div.box div.child-1 {
+		width: 100%;
+		float: none;
+		background-color: blue;
+	}
+	div.box div.child-2 {
+		width: 100%;
+		float: none;
+		background-color: green;
+	}
+
+	div.box img {
+		display: none;
+	}
+}
+
+div.box-2 {
+	width: 300px;
+	height: 300px;
+	background: pink;
+	/* background: linear-gradient(to top left, red, blue, yellow, orange); */
+	background: -webkit-linear-gradient(45deg, red, blue, yellow, orange);
+	background: -moz-linear-gradient(45deg, red, blue, yellow, orange);
+	background: -o-linear-gradient(45deg, red, blue, yellow, orange);
+	background: -ms-linear-gradient(45deg, red, blue, yellow, orange);
+	background: linear-gradient(45deg, red, blue, yellow, orange);
+	
+	/* di chuyen phan tu */
+	/* -webkit-transform: translate(50px, 50px);
+	-moz-transform: translate(50px, 50px);
+	-o-transform: translate(50px, 50px);
+	-ms-transform: translate(50px, 50px); */
+	/* transform: translate(50px, 50px); */
+
+	/* xoay phan tu */
+	/* transform: rotate(75deg); */
+
+	/* keo gian phan tu */
+	/* transform: scale(1, 2); */
+
+	/* be goc do chieu rong va chieu cao cua 1 phan tu */
+	/* transform: skew(10deg, 30deg); */
+
+	transition: all 10s ease 0s;
+	animation: myAnimation 10s ease 0s infinite alternate;
+	position: relative;
+
+}
+
+@keyframes myAnimation {
+	from {
+		top: 0px;
+	}
+	to {
+		top: 600px;
+	}
+}
+
+div.box-2:hover {
+	transform: rotate(360deg);
+	border-radius: 50%;
+	opacity: 0;
+}
+
+div.box-3 {
+	width: 100px;
+	height: 200px;
+	border: 1px solid red;
+	margin:  auto;
+}
+
+div.box-3 p {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+
+
+
+
+
+
+
+

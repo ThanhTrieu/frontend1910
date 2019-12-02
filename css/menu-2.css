@@ -63,7 +63,26 @@ nav div.container ul.menu li ul.dropdown > li ul.dropdown{
 /* menu table */
 nav div.container ul.menu li div.menu-table{
 	display: none;
+	width: 650px;
+	background-color: #323031;
+	position: absolute;
+	top: 45px;
+	left: 0px;
 }
+nav div.container ul.menu li:hover div.menu-table {
+	/* hien thi theo bang table */
+	display: table;
+}
+nav div.container ul.menu li:hover div.menu-table ul {
+	/* ul se la tr trong table */
+	display: table-row;
+}
+nav div.container ul.menu li:hover div.menu-table ul li {
+	/* li se la td trong table */
+	display: table-cell;
+	text-align: left;
+}
+
 
 
 
