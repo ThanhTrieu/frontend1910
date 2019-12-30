@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Login</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-sm-12 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-6 offset-xl-3">
+				<form class="border p-3">
+					<div class="form-group">
+						<label for="user">username</label>
+						<input type="text" id="user" class="form-control">
+						<p class="err-user"></p>
+					</div>
+					<div class="form-group">
+						<label for="pass">password</label>
+						<input type="password" id="pass" class="form-control">
+						<p class="err-pass"></p>
+					</div>
+					<button type="button" class="btn btn-primary">Login</button>
+				</form>
+				<br><br>
+				<form class="border p-3">
+					<h3>Kiem tra so nguyen to</h3>
+					<div class="form-group">
+						<label for="txtNumber">Number</label>
+						<input type="text" id="txtNumber" class="form-control">
+						<p class="err-number"></p>
+					</div>
+					<button class="btn btn-primary" type="button" id="check">Kiem tra</button>
+					<h4 id="result"></h4>
+				</form>
+				<br><br>
+				<textarea class="form-control" id="content"></textarea>
+
+				<p class="my-2" id="text"></p>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		let btnLogin = document.querySelector('button');
+		btnLogin.addEventListener('click', function(){
+			let inputUser = document.getElementById('user');
+			let inputPass = document.getElementById('pass');
+
+			let username = inputUser.value;
+			let password = inputPass.value;
+			
+			let chkUser = null;
+			let chkPass = null;
+
+			if(username.length > 0){
+				// da nhap du lieu
+				chkUser = true;
+				document.getElementsByClassName('err-user')[0].innerHTML = '';
+				inputUser.style.border = '1px solid #ccc';
+			} else {
+				// chua nhap du lieu
+				chkUser = false;
+				// thong bao loi va cac hieu ung loi cho nguoi dung
+				document.getElementsByClassName('err-user')[0].innerHTML = 'Vui long nhap username';
+				inputUser.style.border = '1px solid red';
+			}
+
+			if(password.length > 0){
+				chkPass = true;
+				document.getElementsByClassName('err-pass')[0].innerHTML = '';
+				inputPass.style.border = '1px solid #ccc';
+			} else {
+				chkPass = false;
+				// thong bao loi va cac hieu ung loi cho nguoi dung
+				document.getElementsByClassName('err-pass')[0].innerHTML = 'Vui long nhap password';
+				inputPass.style.border = '1px solid red';
+			}
+
+			if(chkPass && chkUser){
+				if(username === 'admin' && password === '123'){
+					window.location.href = 'home.html';
+				} else {
+					alert('Mat khau hoac username khong dung');
+				}
+			}
+			return false; // dung ko lam gi nua
+		});
+
+		document.getElementById('check').addEventListener('click',function(){
+				let inputNumber = document.getElementById('txtNumber');
+				let number = inputNumber.value;
+				if(!isNaN(number) && number.length > 0){
+					// no la so
+					document.getElementsByClassName('err-number')[0].innerHTML = '';
+					inputNumber.style.border = '1px solid #ccc';
+
+					if(kiemTraSoNguyenTo(number)){
+						document.getElementById('result').innerHTML = `${number} la so nguyen to`;
+					} else {
+						document.getElementById('result').innerHTML = `${number} khong la so nguyen to`;
+					}
+
+				} else {
+					// ko phai so
+					// thong bao loi
+					document.getElementsByClassName('err-number')[0].innerHTML = 'Vui nhap so';
+					inputNumber.style.border = '1px solid red';
+					document.getElementById('result').innerHTML = '';
+				}
+		});
+
+		function kiemTraSoNguyenTo(a){
+			if(a <= 1){
+				return false;
+			}
+
+			if(a == 2){
+				return true;
+			}
+
+			for(let i = 2; i<= Math.sqrt(a); i++){
+				if(a % i == 0){
+					return false;
+				}
+			}
+			return true;
+		}
+
+
+		document.getElementById('content').addEventListener('keyup', function(){
+			let val = this.value;
+			document.getElementById('text').innerHTML = val;
+		});
+	</script>
+</body>
+</html>
