@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Phuong trinh bac hai</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-sm-12 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-6 offset-xl-3">
+				<h1 class="text-center my-3">Giai phuong trinh bac hai</h1>
+				<form class="border p-3 mb-3">
+					<div class="form-group">
+						<label for="hsa">He so a</label>
+						<input type="text" id="hsa" class="form-control">
+						<p class="text-danger" id="errHsa"></p>
+					</div>
+					<div class="form-group">
+						<label for="hsb">He so b</label>
+						<input type="text" id="hsb" class="form-control">
+						<p class="text-danger" id="errHsb"></p>
+					</div>
+					<div class="form-group">
+						<label for="hsc">He so c</label>
+						<input type="text" id="hsc" class="form-control">
+						<p class="text-danger" id="errHsc"></p>
+					</div>
+					<button class="btn btn-primary" type="button" id="btnPT">Giai PT</button>
+					<button class="btn btn-primary" type="button" id="btnReset">Reset</button>
+				</form>
+
+				<p class="text-success" id="result"></p>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		let btnPT = document.getElementById('btnPT');
+		// bat su kien click
+		btnPT.addEventListener('click', function(){
+			// lay gia tri cua cac he so
+			let hsa = document.getElementById('hsa');
+			let hsb = document.getElementById('hsb');
+			let hsc = document.getElementById('hsc');
+
+			let valHsa = hsa.value;
+			valHsa = valHsa.trim();
+
+			let valHsb = hsb.value;
+			valHsb = valHsb.trim();
+
+			let valHsc = hsc.value;
+			valHsc = valHsc.trim();
+
+			// nhung co kiem tra
+			let flagHsa = null;
+			let flagHsb = null;
+			let flagHsc = null;
+
+			// kiem tra he so a (phai la so)
+			if(!isNaN(valHsa) && valHsa.length > 0){
+				// la so 
+				flagHsa = true;
+				hsa.style.border = '1px sloid #ccc';
+				document.getElementById('errHsa').innerHTML = '';
+			} else {
+				// khong phai la so
+				flagHsa = false;
+				hsa.style.border = '1px sloid red';
+				document.getElementById('errHsa').innerHTML = 'Vui long nhap so';
+			}
+
+			// kiem tra cho he so b
+			if(!isNaN(valHsb) && valHsb.length > 0){
+				// la so 
+				flagHsb = true;
+				hsb.style.border = '1px sloid #ccc';
+				document.getElementById('errHsb').innerHTML = '';
+			} else {
+				// khong phai la so
+				flagHsb = false;
+				hsb.style.border = '1px sloid red';
+				document.getElementById('errHsb').innerHTML = 'Vui long nhap so';
+			}
+
+			// kiem tra cho he so c
+			if(!isNaN(valHsc) && valHsc.length > 0){
+				// la so 
+				flagHsc = true;
+				hsc.style.border = '1px sloid #ccc';
+				document.getElementById('errHsc').innerHTML = '';
+			} else {
+				// khong phai la so
+				flagHsc = false;
+				hsc.style.border = '1px sloid red';
+				document.getElementById('errHsc').innerHTML = 'Vui long nhap so';
+			}
+
+			// tien hanh giai pt
+			if(flagHsa && flagHsb && flagHsc){
+				let result = giaiPhuongTrinh(valHsa, valHsb, valHsc);
+				if(!result){
+					document.getElementById('result').innerHTML = 'Phuong trinh vo nghiem';
+				} else {
+					document.getElementById('result').innerHTML = result;
+				}
+			} else {
+				// an ket qua nghiem khi co loi
+				document.getElementById('result').innerHTML = '';
+			}
+
+		});
+
+		function giaiPhuongTrinh(a,b,c){
+			let delta = (b*b) - (4*a*c);
+			if(delta < 0){
+				return false;
+			} else if (delta == 0) {
+				return `PT co nghiem kep x1=x2 = ${-b/(2*a)}`;
+			} else {
+				let x1 = (-b + Math.sqrt(delta))/(2*a);
+				let x2 = (-b - Math.sqrt(delta))/(2*a);
+				return `PT co 2 nghiem phan biet x1 = ${x1} va x2 = ${x2}`;
+			}
+		}
+	</script>
+</body>
+</html>
