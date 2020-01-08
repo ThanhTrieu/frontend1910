@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Funny JQ</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			border: 0;
+		}
+		.container{
+			width: 50px;
+			margin: 20px auto;
+			background-color: black;
+			padding: 5px 5px;
+		}
+		.container .time {
+			text-align: center;
+			margin: 5px 0px;
+			color: white;
+		}
+		.container .green {
+			width: 100%;
+			height: 50px;
+			background-color: gray;
+			border-radius: 50%;
+		}
+		.container .red {
+			width: 100%;
+			height: 50px;
+			background-color: gray;
+			margin-top: 10px;
+			border-radius: 50%;
+		}
+		.container .yellow {
+			width: 100%;
+			height: 50px;
+			background-color: gray;
+			margin-top: 10px;
+			border-radius: 50%;
+		}
+		p.control {
+			text-align: center
+		}
+		p.control > button {
+			background-color: blue;
+			padding: 5px 8px;
+			border-radius: 5px;
+			color: white;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h4 class="time"> 0 </h4>
+		<div class="green traffic" id="green"></div>
+		<div class="red traffic" id="red"></div>
+		<div class="yellow traffic" id="yellow"></div>
+	</div>
+
+	<p class="control">
+		<button class="btn first" id="xanh">Xanh</button>
+		<button class="btn first" id="do">Do</button>
+		<button class="btn first" id="vang">Vang</button>
+	</p>
+		
+	<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			let countTime;
+			let time = 0;
+			let countClick = 0;
+			
+			$('.btn').click(function() {
+				countClick += 1;
+				if(countClick > 1){
+					clearInterval(countTime);
+					time = 0;
+				}
+
+				let self = $(this);
+				let color = self.attr('id');
+				$('.traffic').css('background-color', 'gray');
+				$('.traffic').removeClass('on').addClass('off');
+				$('.btn').attr('disabled', false).css('background-color', 'blue');
+				// khoa  nut vua bam
+				if(color === 'xanh'){
+					self.attr('disabled', true).css('background-color', 'green');
+					$('.green').css('background-color', 'green');
+					$('.green').removeClass('off').addClass('on');
+				} else if (color === 'do') {
+					self.attr('disabled', true).css('background-color', 'red');
+					$('.red').css('background-color', 'red');
+					$('.red').removeClass('off').addClass('on');
+				} else {
+					self.attr('disabled', true).css('background-color', 'yellow');
+					$('.yellow').css('background-color', 'yellow');
+					$('.yellow').removeClass('off').addClass('on');
+				}
+
+				countTime = setInterval(function(){
+					// cu 1s hanh dong lap lai mai mai
+					if(time == 30){
+						time = 0;
+						$('.traffic').css('background-color', 'gray');
+						let currentColor =  $('.container').find('div.on').attr('id');
+						$('.traffic').removeClass('on').addClass('off');
+						if(currentColor === 'green'){
+							$('.red').css('background-color', 'red');
+							$('.red').removeClass('off').addClass('on');
+						} else if (currentColor === 'red') {
+							$('.yellow').css('background-color', 'yellow');
+							$('.yellow').removeClass('off').addClass('on');
+						} else {
+							$('.green').css('background-color', 'green');
+							$('.green').removeClass('off').addClass('on');
+						}
+					}
+
+					time += 1;
+					$('h4.time').text(time);
+				},1000);
+			});
+			
+		});
+	</script>
+</body>
+</html>
