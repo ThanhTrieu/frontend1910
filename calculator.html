@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Simple calculator</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-sm-12 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-6 offset-xl-3 border p-3 mt-3">
+				<div class="row">
+					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+						<h3 class="text-center my-2">Simple calculator</h3>
+						<input type="text" class="form-control js-calculate my-3" disabled>
+						<p class="mb-0 js-result text-right"></p>
+					</div>
+				</div>
+				<hr>
+				<div class="row my-2">
+					<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+						<button class="btn btn-danger btn-sm js-on-off w-100">O/F</button>
+					</div>
+					<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+						<button class="btn btn-secondary btn-sm js-clear w-100">C</button>
+					</div>
+					<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+						<button class="btn btn-secondary btn-sm js-del w-100">D</button>
+					</div>
+				</div>
+				<div class="row my-3">
+					<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+						<button class="btn border w-100 js-btn">1</button>
+					</div>
+					<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+						<button class="btn border w-100 js-btn">2</button>
+					</div>
+					<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+						<button class="btn border w-100 js-btn">3</button>
+					</div>
+					<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+						<button class="btn border w-100 js-btn btn-info">x</button>
+					</div>
+				</div>
+				<div class="row my-3">
+					<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+						<button class="btn border w-100 js-btn">4</button>
+					</div>
+					<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+						<button class="btn border w-100 js-btn">5</button>
+					</div>
+					<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+						<button class="btn border w-100 js-btn">6</button>
+					</div>
+					<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+						<button class="btn border w-100 js-btn btn-info">/</button>
+					</div>
+				</div>
+				<div class="row my-3">
+					<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+						<button class="btn border w-100 js-btn">7</button>
+					</div>
+					<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+						<button class="btn border w-100 js-btn">8</button>
+					</div>
+					<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+						<button class="btn border w-100 js-btn">9</button>
+					</div>
+					<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+						<button class="btn border w-100 js-btn btn-info">+</button>
+					</div>
+				</div>
+				<div class="row my-3">
+					<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+						<button class="btn border w-100 js-btn">0</button>
+					</div>
+					<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+						<button class="btn border w-100 js-btn">.</button>
+					</div>
+					<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+						<button class="btn border w-100 js-show-result btn-success">=</button>
+					</div>
+					<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+						<button class="btn border w-100 js-btn btn-info">-</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.5/math.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			// khoa cac phim khac tru nut on/off
+			$('.js-clear').attr('disabled', true).addClass('js-block');
+			$('.js-del').attr('disabled', true).addClass('js-block');
+			$('.js-btn').attr('disabled', true).addClass('js-block');
+			$('.js-show-result').attr('disabled', true).addClass('js-block');
+
+			// bat su kien khoi dong hoac tat may tinh
+			$('.js-on-off').click(function() {
+				$('.js-clear').toggleClass('js-block');
+				$('.js-del').toggleClass('js-block');
+				$('.js-btn').toggleClass('js-block');
+				$('.js-show-result').toggleClass('js-block');
+
+				// xoa het phep tinh va ket qua
+				$('.js-calculate').val('');
+				$('.js-result').text('');
+
+				// check class js-block
+				if($('.js-clear').hasClass('js-block')){
+					$('.js-clear').attr('disabled', true);
+				} else {
+					$('.js-clear').attr('disabled', false);
+				}
+
+				if($('.js-del').hasClass('js-block')){
+					$('.js-del').attr('disabled', true);
+				} else {
+					$('.js-del').attr('disabled', false);
+				}
+
+				if($('.js-btn').hasClass('js-block')){
+					$('.js-btn').attr('disabled', true);
+				} else {
+					$('.js-btn').attr('disabled', false);
+				}
+
+				if($('.js-show-result').hasClass('js-block')){
+					$('.js-show-result').attr('disabled', true);
+				} else {
+					$('.js-show-result').attr('disabled', false);
+				}
+			});
+
+			// bat su kien cho cac phim so va phep toan
+			$('.js-btn').click(function() {
+				let self = $(this);
+				let valBtn = self.text().trim();
+				// hien thi phep tinh vao the input
+				$('.js-calculate').val($('.js-calculate').val() + valBtn);
+			});
+
+			// bat su kien hien thi ket qua
+			$('.js-show-result').click(function() {
+				// lay ra bieu thuc toan hoc
+				let calculator = $('.js-calculate').val().trim();
+				calculator = calculator.replace(/x/gi,'*');
+
+				let maths = math.evaluate(calculator);
+				// hien thi ket qua
+				$('.js-result').text(maths);
+			});
+
+			// bat su kien clear
+			$('.js-clear').click(function() {
+				$('.js-calculate').val('');
+				$('.js-result').text('');
+			});
+
+			// bat su kien del
+			$('.js-del').click(function() {
+				let calculator = $('.js-calculate').val().trim();
+				let textVal = calculator.substring(0, calculator.length-1);
+				$('.js-calculate').val(textVal);
+			});
+		});
+	</script>
+</body>
+</html>

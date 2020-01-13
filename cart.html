@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Shopping Cart</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+				<h3 class="text-center my-3">Shopping cart</h3>
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th>STT</th>
+							<th>Hinh anh</th>
+							<th>Ten SP</th>
+							<th>So luong</th>
+							<th>Don gia</th>
+							<th>Tien</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>
+								<img src="https://cdn.tgdd.vn/Products/Images/42/211570/TimerThumb/samsung-galaxy-a51-(1).jpg" alt="" width="100" height="100">
+							</td>
+							<td>
+								<p class="mb-0">samsung-galaxy-a51</p>
+							</td>
+							<td>
+								<input type="text" class="form-control js-qty" value="2">
+							</td>
+							<td>
+								7000000
+							</td>
+							<td class="money">
+								14000000
+							</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>
+								<img src="https://cdn.tgdd.vn/Products/Images/42/211570/TimerThumb/samsung-galaxy-a51-(1).jpg" alt="" width="100" height="100">
+							</td>
+							<td>
+								<p class="mb-0">samsung-galaxy-a51</p>
+							</td>
+							<td>
+								<input type="text" class="form-control js-qty" value="3">
+							</td>
+							<td>
+								3000000
+							</td>
+							<td class="money">
+								9000000
+							</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>
+								<img src="https://cdn.tgdd.vn/Products/Images/42/211570/TimerThumb/samsung-galaxy-a51-(1).jpg" alt="" width="100" height="100">
+							</td>
+							<td>
+								<p class="mb-0">samsung-galaxy-a51</p>
+							</td>
+							<td>
+								<input type="text" class="form-control js-qty" value="5">
+							</td>
+							<td>
+								6000000
+							</td>
+							<td class="money">
+								30000000
+							</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr class="bg-success font-weight-bold">
+							<td colspan="5">Tong tien</td>
+							<td class="total-money">53000000</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.js-qty').change(function() {
+				let self = $(this);
+				let value = self.val().trim();
+				if(!isNaN(value) && value.length > 0 && value > 0 && value < 100) {
+				  // lay ra don gia tuong ung cua san pham dang thay doi so luong
+				  let price = self.parent().next().text().trim();
+				  price = Number.parseFloat(price);
+				  value = Number.parseInt(value);
+				  let money = price*value;
+				  // cap nhat lai so tien tuong ung
+				 	self.parent().next().next().text(money);
+
+				 	// cap nhat lai tong tien
+				 	let totalMoney = 0;
+				 	$('.money').each(function(index, el) {
+				 		let m = $(el).text().trim();
+				 		m = Number.parseFloat(m);
+				 		totalMoney += m;
+				 	});
+				 	$('.total-money').text(totalMoney);
+
+				} else {
+					alert('vui long nhap so va lon hon 0 va nho hon 100');
+					self.val(''); // xoa gia tri
+					return false; // dung chuong trinh
+				}
+			});
+		});
+	</script>
+</body>
+</html>
