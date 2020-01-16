@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Auto slide</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<style type="text/css" media="screen">
+		.slide-img{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row mt-3 slide">
+			<div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 slide-img slide-first">
+				<img src="images/ho.jpg" class="img-fluid img-thumbnail w-100 h-75">
+			</div>
+			<div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 slide-img">
+				<img src="images/bao.jpg" class="img-fluid img-thumbnail w-100 h-75">
+			</div>
+			<div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 slide-img">
+				<img src="images/voi.jpg" class="img-fluid img-thumbnail w-100 h-75">
+			</div>
+			<div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 slide-img slide-last">
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.slide-img').removeClass('active')
+			$('.slide-img:first').fadeIn(1500).addClass('active');
+
+			setInterval(function(){
+				// an het di
+				$('.slide-img').fadeOut(1500);
+
+				// xuat phat tu anh co class active de next sang anh tiep theo
+				$('.slide').find('div.active').next().fadeIn(1500).addClass('active');
+				$('.slide').find('div.active').prev().removeClass('active');
+
+				// check anh cuoi cung thi quay ve anh dau tien
+				if($('.slide').find('div.active').hasClass('slide-last')){
+					$('.slide-last').removeClass('active').hide();
+					$('.slide-img:first').fadeIn(1500).addClass('active');
+				}
+
+			}, 3000)
+		});
+	</script>
+</body>
+</html>
